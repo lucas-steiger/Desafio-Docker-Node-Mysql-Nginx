@@ -8,6 +8,7 @@ services:
       - node-network
     volumes:
       - ./node:/usr/src/app
+      - /usr/src/app/node_modules  # Volume anônimo para manter os módulos instalados no container
     tty: true
     ports:
       - "3000:3000"
@@ -25,7 +26,6 @@ services:
       - ./mysql/:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=nodedb
-      - MYSQL_USER=root
       - MYSQL_ROOT_PASSWORD=root
     networks:
       - node-network
